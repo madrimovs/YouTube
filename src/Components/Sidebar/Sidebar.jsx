@@ -11,91 +11,43 @@ import musicIcon from "../../icons/music_icon.svg";
 import gamesIcon from "../../icons/games_icon.svg";
 import vectorIcon from "../../icons/vector_bottom.svg";
 import userIcon from "../../icons/user_icon.svg";
+import SidebarCategory from "./SidebarCategory/SidebarCategory";
+import ChannelList from "./ChannelList/ChannelList";
 
-export const Sidebar = () => {
+const Sidebar = () => {
 	return (
-		<div className="sidebar w-48 h-screen mt-14 pb-44 bg-white overflow-x-scroll ">
+		<div className="sidebar w-56 h-screen mt-16 pb-44 bg-white overflow-auto ">
 			<div className="sidebar__categories mb-3">
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2 gap-4 pl-4 ">
-					<img src={homeIcon} alt="" />
-					<p className="text-sm font-medium">Home</p>
-				</div>
-
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2 gap-4 pl-4 ">
-					<img src={trendingIcon} alt="" />
-					<p className="text-sm font-medium">Trending</p>
-				</div>
-
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2  gap-4 pl-4 ">
-					<img src={subscribtionIcon} alt="" />
-					<p className="text-sm font-medium">Subscriptions</p>
-				</div>
+				<SidebarCategory icon={homeIcon} name={"Home"} />
+				<SidebarCategory icon={trendingIcon} name={"Trending"} />
+				<SidebarCategory icon={subscribtionIcon} name={"Subscriptions"} />
 			</div>
 
 			<hr className="h-0.5 bg-zinc-400" />
 
 			<div className="sidebar__categories mt-3 mb-3 ">
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2 gap-4 pl-4 ">
-					<img src={libraryIcon} alt="" />
-					<p className="text-sm font-medium">Library</p>
-				</div>
-
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2 gap-4 pl-4 ">
-					<img src={historyIcon} alt="" />
-					<p className="text-sm font-medium">History</p>
-				</div>
-
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2  gap-4 pl-4 ">
-					<img src={watchIcon} alt="" />
-					<p className="text-sm font-medium">Watch later</p>
-				</div>
-
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2  gap-4 pl-4 ">
-					<img src={starIcon} alt="" />
-					<p className="text-sm font-medium">Favourites</p>
-				</div>
-
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2  gap-4 pl-4 ">
-					<img src={likeIcon} alt="" />
-					<p className="text-sm font-medium">Liked videos</p>
-				</div>
-
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2  gap-4 pl-4 ">
-					<img src={musicIcon} alt="" />
-					<p className="text-sm font-medium">Music</p>
-				</div>
-
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2  gap-4 pl-4 ">
-					<img src={gamesIcon} alt="" />
-					<p className="text-sm font-medium">Games</p>
-				</div>
-
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2  gap-4 pl-4 ">
-					<img src={vectorIcon} alt="" />
-					<p className="text-sm font-medium">Show more</p>
-				</div>
+				<SidebarCategory icon={libraryIcon} name={"Library"} />
+				<SidebarCategory icon={historyIcon} name={"History"} />
+				<SidebarCategory icon={watchIcon} name={"Watch later"} />
+				<SidebarCategory icon={starIcon} name={"Favourites"} />
+				<SidebarCategory icon={likeIcon} name={"Liked videos"} />
+				<SidebarCategory icon={musicIcon} name={"Music"} />
+				<SidebarCategory icon={gamesIcon} name={"Games"} />
+				<SidebarCategory icon={vectorIcon} name={"Show more"} />
 			</div>
 
 			<hr className="h-0.5 bg-zinc-400" />
 
 			<div className="sidebar__categories mt-8">
-				<h4 className="pl-4 mb-3 font-bold">Subscriptionsc</h4>
+				<h4 className="pl-4 mb-3 font-bold">Subscriptions</h4>
 
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2 gap-4 pl-4">
-					<img src={userIcon} alt="" />
-					<p className="text-sm  font-medium">Gussie Singleton</p>
-				</div>
-
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2 gap-4 pl-4 ">
-					<img src={userIcon} alt="" />
-					<p className="text-sm font-medium">Nora Francis</p>
-				</div>
-
-				<div className="sidebar__category hover:bg-gray-200  rounded-lg cursor-pointer flex items-center py-2  gap-4 pl-4 ">
-					<img src={userIcon} alt="" />
-					<p className="text-sm font-medium">Belle Briggs</p>
-				</div>
+				<ChannelList avatar={userIcon} name={"Gussie Singleton"} />
+				<ChannelList avatar={userIcon} name={"Nora Francis"} />
+				<ChannelList avatar={userIcon} name={"Belle Briggs"} />
+				<ChannelList avatar={userIcon} name={"Gussie Singleton"} />
 			</div>
 		</div>
 	);
 };
+
+export default Sidebar;

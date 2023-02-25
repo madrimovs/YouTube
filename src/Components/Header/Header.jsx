@@ -7,7 +7,7 @@ import combinedIcon from "../../icons/combined_icon.svg";
 import callIcon from "../../icons/call_icon.svg";
 import userIcon from "../../icons/user_icon.svg";
 
-export const Header = () => {
+const Header = () => {
 	return (
 		<div className="header flex justify-between items-center p-4 fixed top-0 left-0 right-0 bg-white">
 			<div className="header__logo flex items-center gap-5">
@@ -40,3 +40,5 @@ export const Header = () => {
 		</div>
 	);
 };
+
+export default Header;

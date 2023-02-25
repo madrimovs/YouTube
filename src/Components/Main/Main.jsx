@@ -1,14 +1,12 @@
 import React from "react";
-import { Recommended } from "../Recommended/Recommended";
-import { Sidebar } from "../Sidebar/Sidebar";
+import Recommended from "../Recommended/Recommended";
 
-export const Main = () => {
+const Main = () => {
 	return (
-		<main>
-			<div className="main__content flex overflow-hidden h-screen">
-				<Sidebar />
-				<Recommended />
-			</div>
-		</main>
+		<>
+			<Recommended />
+		</>
 	);
 };
+
+export default Main;
