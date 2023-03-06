@@ -13,10 +13,17 @@ import vectorIcon from "../../icons/vector_bottom.svg";
 import userIcon from "../../icons/user_icon.svg";
 import SidebarCategory from "./SidebarCategory/SidebarCategory";
 import ChannelList from "./ChannelList/ChannelList";
+import { useState } from "react";
 
 const Sidebar = () => {
+	const [open, setOpen] = useState(false);
+
 	return (
-		<div className="sidebar w-56 h-screen mt-16 pb-44 bg-white overflow-auto ">
+		<div
+			className={` ${
+				open ? "w-0" : "w-56"
+			} sidebar w-56 h-screen mt-16 pb-44 bg-white overflow-auto `}
+		>
 			<div className="sidebar__categories mb-3">
 				<SidebarCategory icon={homeIcon} name={"Home"} />
 				<SidebarCategory icon={trendingIcon} name={"Trending"} />

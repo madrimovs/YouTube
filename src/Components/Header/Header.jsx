@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import menuSvg from "../../icons/burger_menu.svg";
 import logo from "../../icons/logo_black.svg";
 import searchIcon from "../../icons/search_icon.svg";
@@ -7,7 +7,11 @@ import combinedIcon from "../../icons/combined_icon.svg";
 import callIcon from "../../icons/call_icon.svg";
 import userIcon from "../../icons/user_icon.svg";
 
+import { counterContext } from "../Context/CounterContext";
+
 const Header = () => {
+	const counter = useContext(counterContext);
+
 	return (
 		<div className="header flex justify-between items-center p-4 fixed top-0 left-0 right-0 bg-white">
 			<div className="header__logo flex items-center gap-5">
