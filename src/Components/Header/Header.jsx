@@ -8,6 +8,7 @@ import callIcon from "../../icons/call_icon.svg";
 import userIcon from "../../icons/user_icon.svg";
 
 import { counterContext } from "../Context/CounterContext";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	const counter = useContext(counterContext);
@@ -16,7 +17,10 @@ const Header = () => {
 		<div className="header flex justify-between items-center p-4 fixed top-0 left-0 right-0 bg-white">
 			<div className="header__logo flex items-center gap-5">
 				<img className="w-4 cursor-pointer" src={menuSvg} alt="" />
-				<img src={logo} alt="" />
+
+				<Link to={"/"}>
+					<img src={logo} alt="" />
+				</Link>
 			</div>
 
 			<div className="header__search">
@@ -39,7 +43,10 @@ const Header = () => {
 				<img className="cursor-pointer w-5" src={cameraIcon} alt="" />
 				<img className="cursor-pointer w-4" src={combinedIcon} alt="" />
 				<img className="cursor-pointer w-4" src={callIcon} alt="" />
-				<img className="cursor-pointer w-9" src={userIcon} alt="" />
+
+				<Link to={"/MyChannel"}>
+					<img className="cursor-pointer w-9" src={userIcon} alt="" />
+				</Link>
 			</div>
 		</div>
 	);

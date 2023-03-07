@@ -14,6 +14,7 @@ import userIcon from "../../icons/user_icon.svg";
 import SidebarCategory from "./SidebarCategory/SidebarCategory";
 import ChannelList from "./ChannelList/ChannelList";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
 	const [open, setOpen] = useState(false);
@@ -21,11 +22,13 @@ const Sidebar = () => {
 	return (
 		<div
 			className={` ${
-				open ? "w-0" : "w-56"
+				open ? "w-0" : "w-50"
 			} sidebar w-56 h-screen mt-16 pb-44 bg-white overflow-auto `}
 		>
 			<div className="sidebar__categories mb-3">
-				<SidebarCategory icon={homeIcon} name={"Home"} />
+				<Link to={"/"}>
+					<SidebarCategory icon={homeIcon} name={"Home"} />
+				</Link>
 				<SidebarCategory icon={trendingIcon} name={"Trending"} />
 				<SidebarCategory icon={subscribtionIcon} name={"Subscriptions"} />
 			</div>
