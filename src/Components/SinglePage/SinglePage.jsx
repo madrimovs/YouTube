@@ -11,6 +11,12 @@ import likeIcon from "../../icons/like.svg";
 import dislikeIcon from "../../icons/dislike.svg";
 import shareIcon from "../../icons/share.svg";
 import circleIcon from "../../icons/circle.svg";
+import favouriteIcon from "../../icons/star_icon.svg";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	FAVOURITE_HANDLER,
+	REMOVE_HANDLER,
+} from "../../store/typeConstants/typeConstants";
 
 const SinglePage = () => {
 	const { id } = useParams();
@@ -19,7 +25,24 @@ const SinglePage = () => {
 
 	const [videos, setVideo] = useState([]);
 
-	console.log(id);
+	const { favouriteVideos } = useSelector((state) => state.favourite);
+	const disppatch = useDispatch();
+
+	function favouriteHandler(videoData) {
+		let hasVideo = false;
+
+		favouriteVideos.forEach((element) => {
+			if (element.id === videoData.id) {
+				hasVideo = true;
+			}
+		});
+
+		if (hasVideo) {
+			disppatch({ type: REMOVE_HANDLER, payload: videoData });
+		} else {
+			disppatch({ type: FAVOURITE_HANDLER, payload: videoData });
+		}
+	}
 
 	useEffect(() => {
 		const getData = async () => {
@@ -32,7 +55,6 @@ const SinglePage = () => {
 
 				const data = await res.json();
 
-				console.log(data);
 				setVideoData(data);
 			} catch (error) {
 				setIsError(true);
@@ -67,6 +89,13 @@ const SinglePage = () => {
 								</div>
 
 								<div className="flex items-center justify-between">
+									<img
+										onClick={() => favouriteHandler(videoData)}
+										className="w-5 mr-5 cursor-pointer hover:marker:bg-gray-900 "
+										src={favouriteIcon}
+										alt=""
+									/>
+
 									<img className="w-5 cursor-pointer" src={likeIcon} alt="" />
 									<img className="w-5 cursor-pointer ml-4 mt-1" src={dislikeIcon} alt="" />
 

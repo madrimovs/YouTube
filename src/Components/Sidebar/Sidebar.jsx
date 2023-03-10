@@ -15,10 +15,14 @@ import SidebarCategory from "./SidebarCategory/SidebarCategory";
 import ChannelList from "./ChannelList/ChannelList";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
 	const [open, setOpen] = useState(false);
 
+	const { favouriteVideos } = useSelector((state) => state.favourite);
+
+	console.log(favouriteVideos);
 	return (
 		<div
 			className={` ${
@@ -39,7 +43,10 @@ const Sidebar = () => {
 				<SidebarCategory icon={libraryIcon} name={"Library"} />
 				<SidebarCategory icon={historyIcon} name={"History"} />
 				<SidebarCategory icon={watchIcon} name={"Watch later"} />
-				<SidebarCategory icon={starIcon} name={"Favourites"} />
+
+				<Link to={"/favourite-videos"}>
+					<SidebarCategory icon={starIcon} name={"Favourites"} counter={favouriteVideos.length} />
+				</Link>
 				<SidebarCategory icon={likeIcon} name={"Liked videos"} />
 				<SidebarCategory icon={musicIcon} name={"Music"} />
 				<SidebarCategory icon={gamesIcon} name={"Games"} />
