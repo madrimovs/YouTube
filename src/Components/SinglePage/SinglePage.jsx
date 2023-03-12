@@ -15,7 +15,9 @@ import favouriteIcon from "../../icons/star_icon.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	FAVOURITE_HANDLER,
+	LIKED_HANDLER,
 	REMOVE_HANDLER,
+	REMOVE_LIKED,
 } from "../../store/typeConstants/typeConstants";
 
 const SinglePage = () => {
@@ -26,6 +28,9 @@ const SinglePage = () => {
 	const [videos, setVideo] = useState([]);
 
 	const { favouriteVideos } = useSelector((state) => state.favourite);
+	const { likedVideos } = useSelector((state) => state.liked);
+
+	console.log(likedVideos);
 	const disppatch = useDispatch();
 
 	function favouriteHandler(videoData) {
@@ -41,6 +46,22 @@ const SinglePage = () => {
 			disppatch({ type: REMOVE_HANDLER, payload: videoData });
 		} else {
 			disppatch({ type: FAVOURITE_HANDLER, payload: videoData });
+		}
+	}
+
+	function likedHandler(videoData) {
+		let hasVideo = false;
+
+		likedVideos.forEach((element) => {
+			if (element.id === videoData.id) {
+				hasVideo = true;
+			}
+		});
+
+		if (hasVideo) {
+			disppatch({ type: REMOVE_LIKED, payload: videoData });
+		} else {
+			disppatch({ type: LIKED_HANDLER, payload: videoData });
 		}
 	}
 
@@ -89,14 +110,17 @@ const SinglePage = () => {
 								</div>
 
 								<div className="flex items-center justify-between">
+									{favouriteVideos.length}
+
 									<img
 										onClick={() => favouriteHandler(videoData)}
-										className="w-5 mr-5 cursor-pointer hover:marker:bg-gray-900 "
+										className="w-5 mr-5 ml-1 cursor-pointer hover:marker:bg-gray-900 "
 										src={favouriteIcon}
 										alt=""
 									/>
 
-									<img className="w-5 cursor-pointer" src={likeIcon} alt="" />
+									<img onClick={likedHandler} className="w-5 cursor-pointer" src={likeIcon} alt="" />
+									{likedVideos.length}
 									<img className="w-5 cursor-pointer ml-4 mt-1" src={dislikeIcon} alt="" />
 
 									<div className="flex items-center gap-1 ml-7 cursor-pointer">
